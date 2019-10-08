@@ -1,9 +1,9 @@
 # client
-RatingCaptain client classe
+RatingCaptain client class
 
 You can create new ratingcaptain email via this class
 
-First you have to create new instance and pass your RatingCaptain Api Key
+First you have to create new instance and pass your RatingCaptain Api Key,
 you can find your API key in https://ratingcaptain.com/app/websites
 <br>
 Example: '9f6ag554a73a12d224fc1C3bb2274345' <br>
