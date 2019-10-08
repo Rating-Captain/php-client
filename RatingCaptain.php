@@ -1,6 +1,6 @@
 <?php
 
-class RatingCaptain_php_client{
+class RatingCaptain{
     protected $apiKey, $order=array(), $products = array();
     private $store_url = 'https://ratingcaptain.com/api/emails', $delete_url="https://ratingcaptain.com/api/website_rate/destroy";
 
