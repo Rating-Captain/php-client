@@ -41,6 +41,8 @@ class RatingCaptain{
         $this->order['email'] = $data['email'];
         if(array_key_exists('send_date', $data)) $this->order['send_date'] = $data['send_date'];
         if(array_key_exists('send_after', $data)) $this->order['send_after'] = $data['send_after'];
+        if(array_key_exists('name', $data)) $this->order['name'] = $data['name'];
+        if(array_key_exists('surname', $data)) $this->order['surname'] = $data['surname'];
         $this->order['hash'] = $this->apiKey;
         $arr = $this->order;
         if(count($this->products) > 0) $arr['products'] = $this->products;
