@@ -30,13 +30,6 @@ Add an order to email queue
         $order = ["external_id" => $order->id, "email" => $order->email, 'send_date' => Date('Y-m-d H:i:s', strtotime('+5 days'))];
         $test = $ratingcaptain->send($order);
 
-Delete an email from the queue
-
-        /*
-            @ID:int Your order id,
-            @return:array 
-        */
-        $ratingcaptain->deleteOrder($order->id);
         
 Example integration: 
        
