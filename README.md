@@ -4,7 +4,7 @@ RatingCaptain PHP Client class
 You can manage your RatingCaptain email queue with this class.
 
 First, you need to create new instance and pass your RatingCaptain API key,
-you can find your API key here: https://ratingcaptain.com/app/websites
+you can find your API key here: https://ratingcaptain.com/app/website
 <br>
 Example: '9f6ag554a73a12d224fc1C3bb2274345' <br>
 You have 3 methods available:
