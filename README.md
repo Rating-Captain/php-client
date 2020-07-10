@@ -34,12 +34,11 @@ Add an order to email queue
 Example integration: 
        
         $order = [];
-        $ratingcaptain = new \RatingCaptain($request->apiKey);
+        $ratingcaptain = new \RatingCaptain($website_token);
         foreach ($request->products as $product){
             $ratingcaptain->addProduct($product['id'], $product['name'], $product['price'], $product['image_url']);
         }
         $order = ["external_id" => $order->id, "email" => $order->email, 'send_date' => Date('Y-m-d H:i:s', strtotime('+5 days'))];
-        $ratingcaptain = new \RatingCaptain($request->apiKey);
         $test = $ratingcaptain->send($order);
 
 
