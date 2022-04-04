@@ -1,15 +1,16 @@
 <?php
 
-class RatingCaptain{
+class RatingCaptain {
     protected $apiKey, $order=array(), $products = array();
-    private $store_url = 'https://ratingcaptain.com/api/emails', $delete_url="https://ratingcaptain.com/api/website_rate/destroy";
+    private $store_url = 'https://ratingcaptain.com/api/emails';
 
     public function __construct($apiKey)
     {
         $this->apiKey = $apiKey;
     }
 
-    public function addProduct($id, $name, $price = null, $imageUrl = null, $desc = null){
+    public function addProduct($id, $name, $price = null, $imageUrl = null, $desc = null)
+    {
         array_push($this->products, [
             'id' => $id,
             'name' => $name,
@@ -19,7 +20,8 @@ class RatingCaptain{
         ]);
     }
 
-    private function curl($data, $method = 'post', $url){
+    private function curl($data, $method = 'post', $url)
+    {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -31,8 +33,8 @@ class RatingCaptain{
         return $response;
     }
 
-    public function send($data){
-
+    public function send($data)
+    {
         $data['hash'] = $this->apiKey;
         foreach (['external_id', 'email'] as $field){
             if(!$this->checkField($data, $field)) return ['errors' => $field.' is required'];
@@ -49,10 +51,9 @@ class RatingCaptain{
         return $this->curl(json_encode($arr), 'post', $this->store_url);
 
     }
-    public function deleteOrder($id){
-        return $this->curl(json_encode(['id' => $id, 'hash' => $this->apiKey]), 'post', $this->delete_url);
-    }
-    private function checkField($arr, $field){
+    
+    private function checkField($arr, $field)
+    {
         return array_key_exists($field, $arr);
     }
 }
