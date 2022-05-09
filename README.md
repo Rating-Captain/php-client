@@ -4,7 +4,7 @@ RatingCaptain PHP Client class
 You can manage your RatingCaptain email queue with this class.
 
 First, you need to create new instance and pass your RatingCaptain API key,
-you can find your API key here: https://ratingcaptain.com/app/websites
+you can find your API key here: https://ratingcaptain.com/app/website
 <br>
 Example: '9f6ag554a73a12d224fc1C3bb2274345' <br>
 You have 3 methods available:
@@ -30,23 +30,15 @@ Add an order to email queue
         $order = ["external_id" => $order->id, "email" => $order->email, 'send_date' => Date('Y-m-d H:i:s', strtotime('+5 days'))];
         $test = $ratingcaptain->send($order);
 
-Delete an email from the queue
-
-        /*
-            @ID:int Your order id,
-            @return:array 
-        */
-        $ratingcaptain->deleteOrder($order->id);
         
 Example integration: 
        
         $order = [];
-        $ratingcaptain = new \RatingCaptain($request->apiKey);
+        $ratingcaptain = new \RatingCaptain($website_token);
         foreach ($request->products as $product){
             $ratingcaptain->addProduct($product['id'], $product['name'], $product['price'], $product['image_url']);
         }
         $order = ["external_id" => $order->id, "email" => $order->email, 'send_date' => Date('Y-m-d H:i:s', strtotime('+5 days'))];
         $test = $ratingcaptain->send($order);
-        $ratingcaptain = new \RatingCaptain($request->apiKey);
 
 

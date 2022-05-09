@@ -1,10 +1,7 @@
 <?php
-namespace App\Clients;
-class RatingCaptain
-{
-    protected $websiteToken;
-    protected $order = [];
-    protected $products = [];
+
+class RatingCaptain {
+    protected $apiKey, $order=array(), $products = array();
     private $store_url = 'https://ratingcaptain.com/api/emails';
 
     public function __construct($websiteToken)
@@ -23,7 +20,7 @@ class RatingCaptain
         ]);
     }
 
-    private function curl($data, $method, $url)
+    private function curl($data, $method = 'post', $url)
     {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
