@@ -1,7 +1,7 @@
 <?php
 
 class RatingCaptain {
-    protected $apiKey, $order=array(), $products = array();
+    protected $order=array(), $products = array();
     private $store_url = 'https://ratingcaptain.com/api/emails';
 
     public function __construct($websiteToken)
@@ -9,15 +9,22 @@ class RatingCaptain {
         $this->websiteToken = $websiteToken;
     }
 
-    public function addProduct($id, $name, $price = null, $imageUrl = null, $desc = null)
+    public function addProduct($id, $name, $price = null, $imageUrl = null, $desc = null, $productUrl = null, $sku = null, $ean = null)
     {
-        array_push($this->products, [
+        $product = [
             'id' => $id,
             'name' => $name,
             'price' => $price,
             'imageUrl' => $imageUrl,
             'desc' => $desc,
-        ]);
+        ];
+
+        // Add only if exists
+        if($productUrl) $product['product_url'] = $productUrl;
+        if($sku) $product['sku'] = $sku;
+        if($ean) $product['ean'] = $ean;
+
+        array_push($this->products, $product);
     }
 
     private function curl($data, $method = 'post', $url)
